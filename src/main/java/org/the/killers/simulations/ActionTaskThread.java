@@ -1,0 +1,31 @@
+package org.the.killers.simulations;
+import org.the.killers.model.IslandCell;
+import org.the.killers.model.entitys.Animal;
+import org.the.killers.utils.Randomizer;
+import org.the.killers.Settings.Settings;
+
+import java.util.concurrent.Callable;
+
+public class ActionTaskThread implements Callable<Boolean> {
+    private final IslandCell[] rowOfMap;
+
+    ActionTaskThread(IslandCell[] rowOfMap){
+        this.rowOfMap = rowOfMap;
+    }
+
+    @Override
+    public Boolean call() {
+        while (Simulation.isDayRunning) {
+            IslandCell islandCell = rowOfMap[Randomizer.getRandomInt(rowOfMap.length)];
+            Settings.AnimalType type = Randomizer.getRandomEnum(Settings.AnimalType.class);
+            Animal animal = null;
+            while (animal == null) {
+                animal = islandCell.getRandomForType(type);
+            }
+            animal.eat();
+            animal.reproduce();
+            animal.move();
+        }
+        return true;
+    }
+}
