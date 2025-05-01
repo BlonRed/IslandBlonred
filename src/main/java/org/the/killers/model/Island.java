@@ -2,7 +2,7 @@ package org.the.killers.model;
 
 import org.the.killers.utils.AnimalCreator;
 import org.the.killers.utils.Randomizer;
-import org.the.killers.Settings.Settings;
+import org.the.killers.settings.Settings;
 
 public class Island {
     private final int height;

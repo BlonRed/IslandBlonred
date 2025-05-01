@@ -1,7 +1,7 @@
 package org.the.killers.statistics;
 
 import org.the.killers.simulations.Simulation;
-import org.the.killers.Settings.Settings;
+import org.the.killers.settings.Settings;
 
 import java.util.EnumMap;
 import java.util.Map;

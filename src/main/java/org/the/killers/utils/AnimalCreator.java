@@ -1,8 +1,8 @@
 package org.the.killers.utils;
 
-import org.the.killers.Settings.Settings;
+import org.the.killers.settings.Settings;
 import org.the.killers.model.entitys.Animal;
-import org.the.killers.model.entitys.animals.herbivors.*;
+import org.the.killers.model.entitys.animals.herbivores.*;
 import org.the.killers.model.entitys.animals.predators.*;
 
 public class AnimalCreator {

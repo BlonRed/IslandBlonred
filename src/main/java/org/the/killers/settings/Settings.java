@@ -1,7 +1,7 @@
-package org.the.killers.Settings;
+package org.the.killers.settings;
 
 import org.the.killers.model.entitys.Animal;
-import org.the.killers.model.entitys.animals.herbivors.*;
+import org.the.killers.model.entitys.animals.herbivores.*;
 import org.the.killers.model.entitys.animals.predators.*;
 
 import java.util.*;

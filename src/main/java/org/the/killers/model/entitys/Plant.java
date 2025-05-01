@@ -1,7 +1,7 @@
 package org.the.killers.model.entitys;
 
 import org.the.killers.model.Entity;
-import org.the.killers.Settings.Settings;
+import org.the.killers.settings.Settings;
 
 public class Plant extends Entity {
     private double weight = Settings.WEIGHT_PLANT;

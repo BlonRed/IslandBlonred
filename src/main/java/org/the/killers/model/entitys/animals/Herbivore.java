@@ -3,7 +3,7 @@ package org.the.killers.model.entitys.animals;
 import org.the.killers.model.IslandCell;
 import org.the.killers.model.entitys.Animal;
 import org.the.killers.statistics.Statistics;
-import org.the.killers.Settings.Settings;
+import org.the.killers.settings.Settings;
 
 public abstract class Herbivore extends Animal {
     public Herbivore(Settings.AnimalType type) {

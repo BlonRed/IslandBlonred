@@ -2,7 +2,7 @@ package org.the.killers.simulations;
 import org.the.killers.model.IslandCell;
 import org.the.killers.model.entitys.Animal;
 import org.the.killers.utils.Randomizer;
-import org.the.killers.Settings.Settings;
+import org.the.killers.settings.Settings;
 
 import java.util.concurrent.Callable;
 

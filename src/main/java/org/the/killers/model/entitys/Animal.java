@@ -1,6 +1,6 @@
 package org.the.killers.model.entitys;
 
-import org.the.killers.Settings.Settings;
+import org.the.killers.settings.Settings;
 import org.the.killers.model.Entity;
 import org.the.killers.model.IslandCell;
 import org.the.killers.statistics.Statistics;

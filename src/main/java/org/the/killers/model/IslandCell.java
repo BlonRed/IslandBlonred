@@ -5,7 +5,7 @@ import org.the.killers.model.entitys.Animal;
 import org.the.killers.model.entitys.Plant;
 import org.the.killers.statistics.Statistics;
 import org.the.killers.utils.Gender;
-import org.the.killers.Settings.Settings;
+import org.the.killers.settings.Settings;
 
 import java.util.List;
 import java.util.Map;

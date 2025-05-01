@@ -1,7 +1,7 @@
 package org.the.killers.model.entitys.animals.predators;
 
 import org.the.killers.model.entitys.animals.Predator;
-import org.the.killers.Settings.Settings;
+import org.the.killers.settings.Settings;
 
 public class Eagle extends Predator {
     public Eagle(Settings.AnimalType type) {

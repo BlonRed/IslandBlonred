@@ -1,7 +1,7 @@
-package org.the.killers.model.entitys.animals.herbivors;
+package org.the.killers.model.entitys.animals.herbivores;
 
 import org.the.killers.model.entitys.animals.Herbivore;
-import org.the.killers.Settings.Settings;
+import org.the.killers.settings.Settings;
 
 public class Duck extends Herbivore {
     public Duck(Settings.AnimalType type) {

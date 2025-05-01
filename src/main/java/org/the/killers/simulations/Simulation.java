@@ -2,7 +2,7 @@ package org.the.killers.simulations;
 
 import org.the.killers.model.Island;
 import org.the.killers.statistics.Statistics;
-import org.the.killers.Settings.Settings;
+import org.the.killers.settings.Settings;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
