@@ -7,9 +7,15 @@ import org.the.killers.settings.Settings;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// Класс отвечающий за симуляция мира.
+// Создает пулл потоков. Симуляциия длится Settings.AGE_DURATION "дней".
+// Каждый день запускается processDay(), который длится Settings.DAY_DURATION_SECONDS.
+// В конце дня запускается endDay(), который запускает процесс подведения итогов дня и сбора статистики.
+// Потом выводит статистику за день на экран и запусает отрисовку остова.
+
 public class Simulation {
     private final Island island;
-    private final ExecutorService executorS = Executors.newFixedThreadPool(8);
+    private final ExecutorService executorService = Executors.newFixedThreadPool(8);
     private static final AtomicInteger dayCounter = new AtomicInteger(0);
     public static boolean isDayRunning = false;
 
@@ -27,14 +33,14 @@ public class Simulation {
             Statistics.refreshDayStat();
             Statistics.refreshCountOfTypes();
         }
-        executorS.shutdownNow();
+        executorService.shutdownNow();
         Statistics.printTotalStat();
     }
 
     private void processDay() {
         isDayRunning = true;
         for (int i = 0; i < Settings.ISLAND_HEIGHT; i++) {
-            executorS.submit(new ActionTaskThread(Island.getIslandCells()[i]));
+            executorService.submit(new ActionTaskThread(Island.getIslandCells()[i]));
         }
         try {
             TimeUnit.SECONDS.sleep(Settings.DAY_DURATION_SECONDS);

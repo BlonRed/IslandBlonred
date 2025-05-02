@@ -5,6 +5,8 @@ import org.the.killers.model.Island;
 import org.the.killers.model.IslandCell;
 import org.the.killers.model.entitys.Animal;
 
+// Уникальный для каждого экземпляра животного класс отвечающий за передвижени.
+
 public class Coordinate {
     int x;
     int y;

@@ -12,6 +12,10 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+// Класс ячейки (поля) острова. Хранит данные о всех видах животных и растениях находящихся на ячейке.
+// Выполняет все действия по работе с этими данными.
+// Имеет графическое представление - Тип животного с наибольшем количеством и его количество на ячейке.
+
 public class IslandCell {
     int x;
     int y;

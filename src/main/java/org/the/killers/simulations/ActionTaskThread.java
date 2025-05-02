@@ -6,6 +6,11 @@ import org.the.killers.settings.Settings;
 
 import java.util.concurrent.Callable;
 
+// Класс исполнения действия для животных.
+// Получает строку ячеек острова.
+// И на протяжении дня (DAY_DURATION_SECONDS) выбирает случайную ячейку из строки и случайное животное.
+// После чего выполняет все доступные действия - есть, размножаться, ходить.
+
 public class ActionTaskThread implements Callable<Boolean> {
     private final IslandCell[] rowOfMap;
 

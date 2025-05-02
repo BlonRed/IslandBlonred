@@ -6,6 +6,11 @@ import org.the.killers.model.IslandCell;
 import org.the.killers.statistics.Statistics;
 import org.the.killers.utils.*;
 
+// Основой абстрактный класс который реализуют все животные.
+// Содержит уникальный для каждого экземпляра животного класс - Coordinate, отвичающий за передвижение.
+// Содержит реализации методов передвижения, размножения и смерти, общие для всех видов животных.
+// Реализация метода питания - находится в абстрактных классах Herbivore и Predator.
+// Виды животных Утки и Мыши содержат дополнение к основному методу питания.
 public abstract class Animal extends Entity {
     private final Settings.AnimalType type;
     private final double weight;

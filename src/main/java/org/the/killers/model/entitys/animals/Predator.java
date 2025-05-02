@@ -7,6 +7,7 @@ import org.the.killers.utils.Randomizer;
 import org.the.killers.settings.Settings;
 import java.util.Map;
 
+// Абстрактный класс для Хищников. Содержит список рациона для вида.
 
 public abstract class Predator extends Animal {
     Map<Settings.AnimalType, Integer> foodList = Settings.FOOD_LIST.get(this.getType());

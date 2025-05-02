@@ -4,6 +4,10 @@ import org.the.killers.utils.AnimalCreator;
 import org.the.killers.utils.Randomizer;
 import org.the.killers.settings.Settings;
 
+// Класс острова, на котором происходит симуляция. Содержит массив ячеек острова.
+// Запускает процесс наполнения острова "флорой и фауной".
+// Содержит метод отрисовки острова.
+
 public class Island {
     private final int height;
     private final int width;
@@ -53,7 +57,6 @@ public class Island {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 islandCells[y][x].endDayCell();
-
             }
         }
     }

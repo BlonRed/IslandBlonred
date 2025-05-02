@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Класс отвечающий за генирацию случайных значений.
+
 public final class Randomizer {
     private Randomizer() {}
     public static boolean getProbability(int percent){

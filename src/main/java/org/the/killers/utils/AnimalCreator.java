@@ -5,6 +5,8 @@ import org.the.killers.model.entitys.Animal;
 import org.the.killers.model.entitys.animals.herbivores.*;
 import org.the.killers.model.entitys.animals.predators.*;
 
+// Класс содержащий еднственный метод фабрику создания животных по переданному типу.
+
 public class AnimalCreator {
     public static Animal createAnimal(Settings.AnimalType type) {
         return switch (type) {

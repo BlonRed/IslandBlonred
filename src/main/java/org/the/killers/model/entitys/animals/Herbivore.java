@@ -5,6 +5,8 @@ import org.the.killers.model.entitys.Animal;
 import org.the.killers.statistics.Statistics;
 import org.the.killers.settings.Settings;
 
+// Абстрактный класс для Травоядных.
+
 public abstract class Herbivore extends Animal {
     public Herbivore(Settings.AnimalType type) {
         super(type);

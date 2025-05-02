@@ -7,6 +7,8 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// Клас содержащий статистические переменные, методы по их выводу и по их обновлению.
+
 public class Statistics {
 
     public static int bornCount = 0;

@@ -5,12 +5,14 @@ import org.the.killers.model.entitys.animals.herbivores.*;
 import org.the.killers.model.entitys.animals.predators.*;
 
 import java.util.*;
-
+// Класс с настройками проект. Здесь храняться все константы управляющие симуляцией.
+// В этом классе находится AnimalType - enum-класс с типами животных и их характеристиками
+// Для каждого хищника есть FOOD_LIST - в котором перечислен их рациони с вероятностями удачной охоты
 public class Settings {
     //World
     public static final int ISLAND_WIDTH = 10;
     public static final int ISLAND_HEIGHT = 10;
-    public static final int DAY_DURATION_SECONDS = 60;
+    public static final int DAY_DURATION_SECONDS = 30;
     public static final int AGE_DURATION = 10;
 
     //Plants
