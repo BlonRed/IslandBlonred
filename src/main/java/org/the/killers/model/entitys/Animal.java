@@ -114,5 +114,7 @@ public abstract class Animal extends Entity {
         return weight;
     }
 
-
+    public Double getSatiety() {
+        return satiety;
+    }
 }

@@ -10,7 +10,7 @@ public class Settings {
     //World
     public static final int ISLAND_WIDTH = 10;
     public static final int ISLAND_HEIGHT = 10;
-    public static final int DAY_DURATION_SECONDS = 10;
+    public static final int DAY_DURATION_SECONDS = 60;
     public static final int AGE_DURATION = 10;
 
     //Plants
@@ -24,6 +24,7 @@ public class Settings {
     public static final double MAX_SATIETY_PERCENT = 1.2;
     public static final double LOSS_SATIETY_PER_DAY = 0.1;
     public static final int REPRODUCE_CHANCE = 80;
+    public static final int CHANCE_EAT_CATERPILLAR_FOR_HERBIVORE = 90;
 
     public enum AnimalType {
         WOLF (50., 30, 3, 8., Wolf.class, "\uD83D\uDC3A"),
