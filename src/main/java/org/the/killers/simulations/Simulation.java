@@ -52,7 +52,7 @@ public class Simulation {
 
     private void endDay() {
         island.islandEndDay();
-        island.imagine();
+        island.imagineIsland();
     }
     public static AtomicInteger getDayCounter() {
         return dayCounter;

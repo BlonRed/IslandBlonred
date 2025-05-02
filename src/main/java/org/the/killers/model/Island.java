@@ -1,5 +1,7 @@
 package org.the.killers.model;
 
+import org.the.killers.simulations.Simulation;
+import org.the.killers.statistics.Statistics;
 import org.the.killers.utils.AnimalCreator;
 import org.the.killers.utils.Randomizer;
 import org.the.killers.settings.Settings;
@@ -53,7 +55,7 @@ public class Island {
         return islandCells[y][x];
     }
 
-    public void islandEndDay(){
+    public void islandEndDay() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 islandCells[y][x].endDayCell();
@@ -61,12 +63,33 @@ public class Island {
         }
     }
 
-    public void imagine(){
+    public void imagineIsland() {
+        printStartImagine();
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 System.out.print(islandCells[y][x].toString());
             }
-            System.out.printf("%n%n");
+            if (y == height - 1) {
+                System.out.printf("%n");
+            } else {
+                System.out.printf("%n%n");
+            }
         }
+        printEndImagine();
+    }
+
+    private void printStartImagine() {
+        System.out.printf("День %d%n", Simulation.getDayCounter().get());
+        for (int i = 0; i < width; i++) {
+            System.out.print("--------");
+        }
+        System.out.printf("%n");
+    }
+
+    private void printEndImagine() {
+        for (int i = 0; i < width; i++) {
+            System.out.print("--------");
+        }
+        System.out.printf("%n");
     }
 }

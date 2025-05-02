@@ -10,24 +10,25 @@ import java.util.concurrent.atomic.AtomicInteger;
 // Клас содержащий статистические переменные, методы по их выводу и по их обновлению.
 
 public class Statistics {
-
-    public static int bornCount = 0;
-    public static AtomicInteger dayBornCount = new AtomicInteger(0);
-    public static int reproduceCount = 0;
-    public static AtomicInteger dayReproduceCount = new AtomicInteger(0);
-    public static int diedCount = 0;
-    public static AtomicInteger dayDiedCount = new AtomicInteger(0);
-    public static int eatenCount = 0;
-    public static AtomicInteger dayEatenCount = new AtomicInteger(0);
-    public static int eatenPlants = 0;
-    public static AtomicInteger dayEatenCaterpillar = new AtomicInteger(0);
-    public static int eatenCaterpillar = 0;
-    public static AtomicInteger dayEatenPlants = new AtomicInteger(0);
-    public static Map<Settings.AnimalType, Integer> countsOfTypes = new EnumMap<>(Settings.AnimalType.class);
+    private static int bornCount = 0;
+    public static final AtomicInteger dayBornCount = new AtomicInteger(0);
+    private static int reproduceCount = 0;
+    public static final AtomicInteger dayReproduceCount = new AtomicInteger(0);
+    private static int diedCount = 0;
+    public static final AtomicInteger dayDiedCount = new AtomicInteger(0);
+    private static int eatenCount = 0;
+    public static final AtomicInteger dayEatenCount = new AtomicInteger(0);
+    private static int eatenPlants = 0;
+    public static final AtomicInteger dayEatenCaterpillar = new AtomicInteger(0);
+    private static int eatenCaterpillar = 0;
+    public static final AtomicInteger dayEatenPlants = new AtomicInteger(0);
+    public static final Map<Settings.AnimalType, Integer> countsOfTypes = new EnumMap<>(Settings.AnimalType.class);
+    private static int dayCountAnimal = 0;
 
     static {
         refreshCountOfTypes();
     }
+    private Statistics(){}
 
     public static void refreshCountOfTypes() {
         for (Settings.AnimalType animalType : Settings.AnimalType.values()) {
@@ -42,6 +43,7 @@ public class Statistics {
         dayReproduceCount.set(0);
         dayBornCount.set(0);
         dayEatenCaterpillar.set(0);
+        dayCountAnimal = 0;
     }
 
     public static void refreshAllStat() {
@@ -64,8 +66,7 @@ public class Statistics {
     }
 
     public static void printDailyStat() {
-        System.out.printf("День %d.%n" +
-                "Статистика за день:%n", Simulation.getDayCounter().get());
+        System.out.println("Статистика за день:");
         System.out.printf("Рождено: %d | ", dayBornCount.get());
         System.out.printf("Зачато: %d | ", dayReproduceCount.get());
         System.out.printf("Умерло: %d | ", dayDiedCount.get());
@@ -76,8 +77,10 @@ public class Statistics {
         System.out.printf("Всего на острове:%n");
         for (Settings.AnimalType type : countsOfTypes.keySet()) {
             System.out.printf("{%s:%d}", type, countsOfTypes.get(type));
+            dayCountAnimal += countsOfTypes.get(type);
         }
-        System.out.printf("%n%n");
+        System.out.printf(" Общее количество: %d%n%n%n", dayCountAnimal);
+
     }
 
     public static void printTotalStat() {
