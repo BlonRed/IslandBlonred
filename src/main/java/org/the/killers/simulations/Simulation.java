@@ -24,14 +24,18 @@ public class Simulation {
     }
 
     public void start() {
-        for (int i = 0; i < Settings.AGE_DURATION; i++) {
-            processDay();
-            dayCounter.incrementAndGet();
-            endDay();
-            Statistics.printDailyStat();
-            Statistics.actualizingAllStat();
-            Statistics.refreshDayStat();
-            Statistics.refreshCountOfTypes();
+        try {
+            for (int i = 0; i < Settings.AGE_DURATION; i++) {
+                processDay();
+                dayCounter.incrementAndGet();
+                endDay();
+                Statistics.printDailyStat();
+                Statistics.actualizingAllStat();
+                Statistics.refreshDayStat();
+                Statistics.refreshCountOfTypes();
+            }
+        } catch (RuntimeException exc) {
+            System.out.println(exc.getMessage());
         }
         executorService.shutdownNow();
         Statistics.printTotalStat();
@@ -40,7 +44,9 @@ public class Simulation {
     private void processDay() {
         isDayRunning = true;
         for (int i = 0; i < Settings.ISLAND_HEIGHT; i++) {
-            executorService.submit(new ActionTaskThread(Island.getIslandCells()[i]));
+            for (int j = 0; j < Settings.ISLAND_WIDTH; j++) {
+                executorService.submit(new ActionTaskThread(Island.getIslandCells()[i][j]));
+            }
         }
         try {
             TimeUnit.SECONDS.sleep(Settings.DAY_DURATION_SECONDS);

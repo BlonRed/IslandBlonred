@@ -45,7 +45,7 @@ public class Coordinate {
                 return islandCell;
             }
         }
-        throw new RuntimeException();
+        throw new RuntimeException(String.format("Лиимит %s на острове близок к пределу. Симуляция будет завершена.", animal.getType()));
     }
 
     private void setRandomDirection(int direction) {

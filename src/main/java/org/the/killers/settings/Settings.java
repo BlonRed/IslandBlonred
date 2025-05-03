@@ -10,9 +10,9 @@ import java.util.*;
 // Для каждого хищника есть FOOD_LIST - в котором перечислен их рациони с вероятностями удачной охоты
 public class Settings {
     //World
-    public static final int ISLAND_WIDTH = 10;
-    public static final int ISLAND_HEIGHT = 10;
-    public static final int DAY_DURATION_SECONDS = 30;
+    public static final int ISLAND_WIDTH = 8;
+    public static final int ISLAND_HEIGHT = 8;
+    public static final int DAY_DURATION_SECONDS = 10;
     public static final int AGE_DURATION = 10;
 
     //Plants
@@ -25,7 +25,7 @@ public class Settings {
     public static final double NORMAL_SATIETY_PERCENT = 0.8;
     public static final double MAX_SATIETY_PERCENT = 1.2;
     public static final double LOSS_SATIETY_PER_DAY = 0.1;
-    public static final int REPRODUCE_CHANCE = 80;
+    public static final int REPRODUCE_CHANCE = 30;
     public static final int CHANCE_EAT_CATERPILLAR_FOR_HERBIVORE = 90;
 
     public enum AnimalType {

@@ -6,6 +6,7 @@ import org.the.killers.model.entitys.Plant;
 import org.the.killers.statistics.Statistics;
 import org.the.killers.utils.Gender;
 import org.the.killers.settings.Settings;
+import org.the.killers.utils.Randomizer;
 
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 // Класс ячейки (поля) острова. Хранит данные о всех видах животных и растениях находящихся на ячейке.
 // Выполняет все действия по работе с этими данными.
 // Имеет графическое представление - Тип животного с наибольшем количеством и его количество на ячейке.
+// Также содержит метод (actionForRandomAnimal()) выбирающий случайное животное в ячейке
+// После чего у этого животного вызываеются действия - есть, размножаться, ходить.
 
 public class IslandCell {
     int x;
@@ -48,7 +51,6 @@ public class IslandCell {
 
     }
 
-
     public synchronized Animal getPersonForReproduce(Animal wishing) {
         Gender genderWishing = wishing.getGender();
         return mapAnimals.get(wishing.getType()).stream()
@@ -74,8 +76,8 @@ public class IslandCell {
         return null;
     }
 
-    public synchronized Animal getRandomForType(Settings.AnimalType type) {
-        return mapAnimals.get(type).stream().filter(Animal::isAlive).findAny().get();
+    public synchronized Animal getRandomAnimal() {
+        return Randomizer.getRandomFromList(mapAnimals.get(Randomizer.getRandomEnum(Settings.AnimalType.class)));
     }
 
     void growPlants() {
@@ -111,6 +113,13 @@ public class IslandCell {
         for (Settings.AnimalType type : Settings.AnimalType.values()) {
             Statistics.countsOfTypes.put(type, (Statistics.countsOfTypes.get(type) + mapAnimals.get(type).size()));
         }
+    }
+
+    public void actionForRandomAnimal() {
+            Animal animal = getRandomAnimal();
+            animal.eat();
+            animal.reproduce();
+            animal.move();
     }
 
     @Override
