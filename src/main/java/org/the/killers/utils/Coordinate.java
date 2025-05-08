@@ -40,7 +40,7 @@ public class Coordinate {
     }
 
     public IslandCell setRandomCoordinate(Animal animal) {
-        for (int i = 0; i < (Settings.ISLAND_HEIGHT * Settings.ISLAND_WIDTH * 100); i++) {
+        for (int i = 0; i < (Settings.ISLAND_HEIGHT * Settings.ISLAND_WIDTH); i++) {
             x = Randomizer.getRandomInt(Settings.ISLAND_WIDTH);
             y = Randomizer.getRandomInt(Settings.ISLAND_HEIGHT);
             islandCell = Island.getIslandCell(x, y);
@@ -50,7 +50,7 @@ public class Coordinate {
             }
 
         }
-        throw new RuntimeException(String.format("Лиимит %s на острове близок к пределу. Симуляция будет завершена.", animal.getType()));
+        return ifRandomNoExist(animal);
     }
 
     private void setRandomDirection(int direction) {
@@ -93,5 +93,18 @@ public class Coordinate {
 
     public IslandCell getIslandCell() {
         return islandCell;
+    }
+
+    private IslandCell ifRandomNoExist(Animal animal) {
+        for (int yy = 0; yy < Settings.ISLAND_HEIGHT ; yy++) {
+            for (int xx = 0; xx < Settings.ISLAND_WIDTH; xx++) {
+                islandCell = Island.getIslandCell(xx, yy);
+                if (!islandCell.isLimitEnd(animal)) {
+                    islandCell.addAnimal(animal);
+                    return islandCell;
+                }
+            }
+        }
+        throw new RuntimeException(String.format("Лиимит %s на острове близок к пределу. Симуляция будет завершена.", animal.getType()));
     }
 }

@@ -46,8 +46,7 @@ public class IslandCell {
     }
 
     public synchronized boolean isLimitEnd(Animal animal) {
-        int maxAnimalOnOneCell = animal.getMaxPersonOnOneCell();
-        return mapAnimals.get(animal.getType()).size() >= maxAnimalOnOneCell;
+        return mapAnimals.get(animal.getType()).size() >= animal.getMaxPersonOnOneCell();
 
     }
 
@@ -87,7 +86,7 @@ public class IslandCell {
         int size = plants.size();
         if (size < Settings.MAX_PLANT_ON_ONE_CELL) {
             int different = Settings.MAX_PLANT_ON_ONE_CELL - size;
-            int count = different > 40 ? Settings.GROW_PLANT_PER_DAY : different;
+            int count = different > Settings.GROW_PLANT_PER_DAY ? Settings.GROW_PLANT_PER_DAY : different;
             growCountPlants(count);
         }
 
@@ -128,6 +127,6 @@ public class IslandCell {
     @Override
     public String toString() {
         Settings.AnimalType type = mapAnimals.entrySet().stream().max((x, y) -> x.getValue().size() - y.getValue().size()).get().getKey();
-        return String.format("[%s:%d]\t", type.image, mapAnimals.get(type).size());
+        return String.format("[%s:%d] ", type.image, mapAnimals.get(type).size());
     }
 }

@@ -34,15 +34,15 @@ public class Simulation {
                 tasks.add(new ActionTaskThread(Island.getIslandCells()[i][j]));
             }
         }
-        for (int i = 0; i < Settings.AGE_DURATION; i++) {
-            try {
+        try {
+            for (int i = 0; i < Settings.AGE_DURATION; i++) {
                 processDay();
                 dayCounter.incrementAndGet();
                 endDay();
                 printDailyStats();
-            } catch (Exception exception) {
-                System.out.println(exception.getMessage());
             }
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
         }
         executorService.shutdownNow();
         Statistics.printTotalStat();
