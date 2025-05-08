@@ -40,9 +40,12 @@ public abstract class Animal extends Entity {
     public abstract void eat();
 
     public void die() {
+        islandCell.removeAnimal(this);
         isAlive = false;
         Statistics.dayDiedCount.incrementAndGet();
-        islandCell.removeAnimal(this);
+        if (satiety < 0) {
+            Statistics.dayHungryDiedCount.incrementAndGet();
+        }
     }
 
     public void move() {
@@ -69,11 +72,13 @@ public abstract class Animal extends Entity {
             }
         }
     }
+
     public void setSatiety(double weightFood) {
         double percent = weightFood / foodRequired;
         double temp = satiety + percent;
         satiety = temp > 1 ? Settings.MAX_SATIETY_PERCENT : temp;
     }
+
     public boolean isNeedEat() {
         return satiety <= Settings.NORMAL_SATIETY_PERCENT;
     }

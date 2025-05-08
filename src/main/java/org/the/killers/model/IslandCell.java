@@ -79,6 +79,9 @@ public class IslandCell {
     public synchronized Animal getRandomAnimal() {
         return Randomizer.getRandomFromList(mapAnimals.get(Randomizer.getRandomEnum(Settings.AnimalType.class)));
     }
+    public synchronized boolean isContainThis(Animal animal) {
+        return mapAnimals.get(animal.getType()).contains(animal);
+    }
 
     void growPlants() {
         int size = plants.size();

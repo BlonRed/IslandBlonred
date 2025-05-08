@@ -3,9 +3,9 @@ import org.the.killers.model.IslandCell;
 
 import java.util.concurrent.Callable;
 
-// Класс исполнения действия для животных.
+// Класс задача. Исполнения действия для животных.
 // Получает ячеку острова.
-// И на протяжении дня (DAY_DURATION_SECONDS) инициирует выполнение у случайного животного набор дествий.
+// И пока день продолжается инициирует выполнение у случайного животного в ячейке набор дествий.
 // Набор - есть, размножаться, ходить.
 
 public class ActionTaskThread implements Callable<Boolean> {
@@ -17,7 +17,7 @@ public class ActionTaskThread implements Callable<Boolean> {
 
     @Override
     public Boolean call() {
-        while (Simulation.isDayRunning) {
+        if (Simulation.isDayRunning) {
                 islandCell.actionForRandomAnimal();
         }
         return true;

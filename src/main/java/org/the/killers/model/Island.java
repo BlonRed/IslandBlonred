@@ -1,13 +1,12 @@
 package org.the.killers.model;
 
 import org.the.killers.simulations.Simulation;
-import org.the.killers.statistics.Statistics;
 import org.the.killers.utils.AnimalCreator;
 import org.the.killers.utils.Randomizer;
 import org.the.killers.settings.Settings;
 
 // Класс острова, на котором происходит симуляция. Содержит массив ячеек острова.
-// Запускает процесс наполнения острова "флорой и фауной".
+// Запускает процесс наполнения острова "фауной".
 // Содержит метод отрисовки острова.
 
 public class Island {
@@ -26,7 +25,7 @@ public class Island {
 
     private void initialize() {
         createIslandCells();
-        createFlora();
+        createFauna();
     }
 
     private void createIslandCells() {
@@ -37,10 +36,10 @@ public class Island {
         }
     }
 
-    private void createFlora() {
+    private void createFauna() {
         for (Settings.AnimalType type : Settings.AnimalType.values()) {
             for (int i = 0; i < width * height; i++) {
-                for (int j = 0; j < Randomizer.getRandomInt(1, type.maxPersonOnOneCell); j++) {
+                for (int j = 0; j < Randomizer.getRandomInt(type.maxPersonOnOneCell/2); j++) {
                     AnimalCreator.createAnimal(type);
                 }
             }

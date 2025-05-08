@@ -15,9 +15,11 @@ public abstract class Herbivore extends Animal {
     @Override
     public void eat() {
         IslandCell islandCell = this.getIslandCell();
-        while (islandCell.hasPlants() && this.isNeedEat()) {
-            setSatiety(islandCell.removePlant().getWeight());
-            Statistics.dayEatenPlants.incrementAndGet();
+        synchronized (islandCell) {
+            while (islandCell.hasPlants() && this.isNeedEat()) {
+                setSatiety(islandCell.removePlant().getWeight());
+                Statistics.dayEatenPlants.incrementAndGet();
+            }
         }
     }
 }
